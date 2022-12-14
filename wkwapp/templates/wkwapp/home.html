@@ -1,0 +1,289 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+
+<div class="main">
+
+    <header class="header" style="background-image: url({% static 'images/banner.jpg' %});">
+        <div class="headcontain">
+
+
+            
+            {% include 'head_area.html' %}
+
+
+            <!-- HEADBAR -->
+
+            <div class="headbar">
+                <a class="choosen" href="">Start</a>
+                <a class="link_headbar" href="">Neues</a>
+                <a class="link_headbar" href="{% url 'me' %}">Ich</a>
+                <a class="link_headbar" href="{% url 'know' %}">Ich kenne</a>
+                <a class="link_headbar" href="">Gruppen</a>
+                <a class="link_headbar" href="{% url 'messagesPage' user.id 1 %}">Nachrichen</a>
+                <a class="link_headbar" href="">Kalender</a>
+                <a class="link_headbar" href="">Einstellungen</a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <div class="page">
+
+
+        <!-- LEFT PAGE SECTION -->
+
+        <div class="page-section" style="width: 2100px; margin-left: 25px;">
+            <a href="{% url 'know_requests' %}">
+                {% if len_requests > 1 %}
+                <p style="margin: 0;">{{ len_requests }} Leute fragen, ob sie Dich kennen</p>
+                {% elif len_requests > 0 %}
+                <p class="to_underline" style="margin: 0;">{{ requester.first_name }} {{ requester.last_name }} fragt, ob ihr euch kennt</p>
+                {% else %}
+                <p></p>
+                {% endif %}
+            </a>
+            
+            <h1 class="headline">
+                Persönliche Startseite
+            </h1>
+            <div class="firstSteps">
+                <div class="lineframe">
+                    <div class="blueline-shadow">
+                        <div class="blueline">
+                            <p class="text_blueline">
+                                Erste Schritte bei wer-kennt-wen
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contentContainer">
+                    <a class="blockText" href="" style="margin-left: 0;"><span class="midpoint">&bull;</span> Eigene
+                        Seite gestalten und
+                        Foto hochladen</a>
+                    <div class="findFrendsContainer">
+                        <p class="inlineText">
+                            <span class="midpoint">&bull;</span> Freunde und Bekannte <a href="">einladen</a> oder
+                            finden:
+                        </p>
+                        <input class="searchbar" type="text">
+                        <button class="otherButton">Finden</button>
+                    </div>
+                    <p class="blockText">
+                        <span class="midpoint">&bull;</span> Du hast Fragen? Unsere <a href="">AusKenner</a> helfen
+                        Dir weiter
+                    </p>
+                    <a class="blockText" href="" style="margin-left: 0;">
+                        <span class="midpoint">&bull;</span> Gruppen &#40;Vereine etc&#46;&#41; in der Umgebung
+                        finden oder eigene Gruppen erstellen
+                    </a>
+                    <a class="blockText" href="" style="margin-left: 0;">
+                        <span class="midpoint">&bull;</span> Exklusiv bei Mode &#38; bis zu 70&#37; sparen
+                    </a>
+                </div>
+            </div>
+
+            <div class="firstSteps">
+                <div class="lineframe">
+                    <div class="blueline-shadow">
+                        <div class="blueline">
+                            <p class="text_blueline">
+                                Leute einladen&#44; die Du kennst
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contentContainer2">
+                    <p class="blockText">
+                        Kennst Du Leute&#44; die Du bei wer-kennt-wen noch nicht gefunden hast&#63;
+                    </p>
+                    <p class="blockText">
+                        Trage einfach jeweils eine E&#8211;Mail&#8211;Adresse unten ein&#44; damit eine Einladung
+                        verschickt wird&#46;
+                    </p>
+                </div>
+            </div>
+            <div class="inventFrame">
+                <div class="inputTypes">
+                    <p class="MailName">E&#8211;Mail&#8211;Adresse</p>
+                    <p class="MailName">Vorname</p>
+                    <p class="MailName" style="margin-left:42px;">Nachname</p>
+                </div>
+                <div class="flex">
+                    <div class="flex">
+                        <input class="inputs" style="width: 230px;" type="text">
+                        <input class="inputs" type="text">
+                        <input class="inputs" type="text">
+                    </div>
+                    <div class="inputMassege">
+                        <a class="blockText" href="">Nachricht hinzufügen</a>
+                        <a class="buttonLink" href="">
+                            <img class="icon" style="margin-left: 20px" src="{% static 'images/icons/sendMessage.png' %}">
+                            <p class="buttonText">
+                                Einladen
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- RIGHT PAGE SECTION -->
+
+        <div class="page-section" style="margin: 50px 20px">
+            <div class="firstSteps">
+                <div class="lineframe">
+                    <div class="blueline-shadow">
+                        <div class="blueline">
+                            <p class="text_blueline" style="width: 250px;">
+                                Möchten eingeladen werden
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contentContainer">
+                    empty
+                </div>
+            </div>
+            <div class="firstSteps">
+                <div class="lineframe">
+                    <div class="blueline-shadow">
+                        <div class="blueline">
+                            <p class="text_blueline" style="width: 250px;">
+                                {% if online_users_amount > 1 %}
+                                {{ online_users_amount }} sind online
+                                {% elif online_users_amount == 1 %}
+                                einer ist online
+                                {% else %}
+                                keiner ist online
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contentContainer">
+                    <div class="fullWidth" id="otherPeople" style="margin-top: 20px;">
+                        <div class="flex" style="width: 100%;">
+                            {% if online_users_amount > 0 %}
+                            <div class="third"><a href="{% url 'visitedUser' online_users.0.id %}"><img style="width: 100px;" src="{{ online_users.0.avatar.url }}" alt=""></a></div>
+                            {% endif %}
+                            {% if online_users_amount > 1 %}
+                            <div class="third"><a href="{% url 'visitedUser' online_users.1.id %}"><img style="width: 100px;" src="{{ online_users.1.avatar.url }}" alt=""></a></div>
+                            {% endif %}
+                            {% if online_users_amount > 2 %}
+                            <div class="third"><a href="{% url 'visitedUser' online_users.2.id %}"><img style="width: 100px;" src="{{ online_users.2.avatar.url }}" alt=""></a></div>
+                            {% endif %}
+                        </div>
+                        <div class="flex" style="width: 100%;">
+                            {% if online_users_amount > 3 %}
+                            <div class="third"><a href="{% url 'visitedUser' online_users.3.id %}"><img style="width: 100px;" src="{{ online_users.3.avatar.url }}" alt=""></a></div>
+                            {% endif %}
+                            {% if online_users_amount > 4 %}
+                            <div class="third"><a href="{% url 'visitedUser' online_users.4.id %}"><img style="width: 100px;" src="{{ online_users.4.avatar.url }}" alt=""></a></div>
+                            {% endif %}
+                            {% if online_users_amount > 5 %}
+                            <div class="third"><a href="{% url 'visitedUser' online_users.5.id %}"><img style="width: 100px;" src="{{ online_users.5.avatar.url }}" alt=""></a></div>
+                            {% endif %}
+                        </div>
+                        <div class="flex" style="width: 100%;">
+                            {% if online_users_amount > 6 %}
+                            <div class="third"><a href="{% url 'visitedUser' online_users.6.id %}"><img style="width: 100px;" src="{{ online_users.6.avatar.url }}" alt=""></a></div>
+                            {% endif %}
+                            {% if online_users_amount > 7 %}
+                            <div class="third"><a href="{% url 'visitedUser' online_users.7.id %}"><img style="width: 100px;" src="{{ online_users.7.avatar.url }}" alt=""></a></div>
+                            {% endif %}
+                            {% if online_users_amount > 8 %}
+                            <div class="third"><a href="{% url 'visitedUser' online_users.8.id %}"><img style="width: 100px;" src="{{ online_users.8.avatar.url }}" alt=""></a></div>
+                            {% endif %}
+                        </div>
+                                 
+                    </div>
+                </div>
+            </div>
+            <div class="firstSteps">
+                <div class="lineframe">
+                    <div class="blueline-shadow">
+                        <div class="blueline">
+                            <p class="text_blueline" style="width: 250px;">
+                                Leute einladen
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contentContainer">
+                    empty
+                </div>
+            </div>
+            <div class="firstSteps">
+                <div class="lineframe">
+                    <div class="blueline-shadow">
+                        <div class="blueline">
+                            <p class="text_blueline" style="width: 250px;">
+                                Top Orte
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contentContainer">
+                    empty
+                </div>
+            </div>
+            <div class="firstSteps">
+                <div class="lineframe">
+                    <div class="blueline-shadow">
+                        <div class="blueline">
+                            <p class="text_blueline" style="width: 250px;">
+                                Vielleicht kennst Du&#46;&#46;&#46;&quest;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fullWidth" id="otherPeople" style="margin-top: 20px;">
+                    <div class="flex" style="width: 100%;">
+                        {% if userLen > 0 %}
+                        <div class="third"><a href="{% url 'visitedUser' users.0.id %}"><img style="width: 100px;" src="{{ users.0.avatar.url }}" alt=""></a></div>
+                        {% endif %}
+                        {% if userLen > 1 %}
+                        <div class="third"><a href="{% url 'visitedUser' users.1.id %}"><img style="width: 100px;" src="{{ users.1.avatar.url }}" alt=""></a></div>
+                        {% endif %}
+                        {% if userLen > 2 %}
+                        <div class="third"><a href="{% url 'visitedUser' users.2.id %}"><img style="width: 100px;" src="{{ users.2.avatar.url }}" alt=""></a></div>
+                        {% endif %}
+                    </div>
+                    <div class="flex" style="width: 100%;">
+                        {% if userLen > 3 %}
+                        <div class="third"><a href="{% url 'visitedUser' users.3.id %}"><img style="width: 100px;" src="{{ users.3.avatar.url }}" alt=""></a></div>
+                        {% endif %}
+                        {% if userLen > 4 %}
+                        <div class="third"><a href="{% url 'visitedUser' users.4.id %}"><img style="width: 100px;" src="{{ users.4.avatar.url }}" alt=""></a></div>
+                        {% endif %}
+                        {% if userLen > 5 %}
+                        <div class="third"><a href="{% url 'visitedUser' users.5.id %}"><img style="width: 100px;" src="{{ users.5.avatar.url }}" alt=""></a></div>
+                        {% endif %}
+                    </div>
+                    <div class="flex" style="width: 100%;">
+                        {% if userLen > 6 %}
+                        <div class="third"><a href="{% url 'visitedUser' users.6.id %}"><img style="width: 100px;" src="{{ users.6.avatar.url }}" alt=""></a></div>
+                        {% endif %}
+                        {% if userLen > 7 %}
+                        <div class="third"><a href="{% url 'visitedUser' users.7.id %}"><img style="width: 100px;" src="{{ users.7.avatar.url }}" alt=""></a></div>
+                        {% endif %}
+                        {% if userLen > 8 %}
+                        <div class="third"><a href="{% url 'visitedUser' users.8.id %}"><img style="width: 100px;" src="{{ users.8.avatar.url }}" alt=""></a></div>
+                        {% endif %}
+                    </div>
+                             
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

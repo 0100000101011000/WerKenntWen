@@ -1,0 +1,173 @@
+p {
+    font-size: 22px;
+
+}
+
+a {
+    color: rgb(55, 0, 117);
+}
+
+
+
+.paragraph {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.pictureFrame {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.profilePicture {
+    height: auto;
+    width: 300px;
+}
+
+.justFrame {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(183, 183, 183);
+    width: 47%;
+    min-height: 100px;
+    padding: 0px 10px;
+}
+
+.infoHeader {
+    display: inline-block;
+    font-size: 24px;
+    color: #85372b;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.imageAlignText {
+    display: flex;
+    align-items: center;
+}
+
+.question {
+    font-size: 22px;
+    width: 145px;
+    margin-right: 0;
+    padding: 5px 0;
+    padding-left: 0px;
+    color: gray;
+}
+
+.answereMe {
+    color: #551A8B;
+    font-size: 22px;
+    background-color: transparent;
+    border-style: none;
+    padding: 5px 0px;
+}
+
+.answereMe,
+.invisibleButton:hover {
+    cursor: pointer;
+}
+
+.tableSpace {
+    margin-bottom: 50px;
+}
+
+textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+}
+
+.personal {
+    font-size: 22px;
+    color: gray;
+    width: 435px;
+    height: 120px;
+    border-style: none;
+    resize: none;
+}
+
+.personal:scope {
+    border-style: none;
+    border-width: 0;
+}
+
+td {
+    vertical-align: top;
+}
+
+.noEdit {
+    padding: 5px 0px;
+    font-size: 22px;
+}
+
+.currentActives {
+    width: 700px;
+    height: 300px;
+    margin-right: 5px;
+    resize: none;
+    font-size: 24px;
+}
+
+.sendButton {
+    font-size: 24px;
+    border-color: darkslateblue;
+}
+
+.sendButton:hover {
+    cursor: pointer;
+}
+
+.buttonContent {
+    display: flex;
+    width: 210px;
+    justify-content: center;
+    text-align: center;
+}
+
+input,
+textarea:focus {
+    outline: none !important;
+}
+
+.icons {
+    width: 45px;
+    height: 140px;
+    margin-right: 10px;
+}
+
+.invisibleButton {
+    white-space: nowrap;
+    display: block;
+    color: #551A8B;
+    font-size: 22px;
+    background-color: transparent;
+    border-style: none;
+    padding: 9px 0px;
+}
+
+.invisibleButton:hover {
+    text-decoration: underline;
+}
+
+.map {
+    margin-top: 15px;
+    width: 320px;
+    height: auto;
+}
+
+.sizeGiver {
+    width: 100%;
+}
+
+.someFrends {
+    display: flex;
+    align-items: center;
+    width: 95%;
+}
+
+.frendsFount {
+    margin: -0 -50px;
+    font-size: 16px;
+    padding: 0;
+}

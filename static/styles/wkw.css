@@ -1,0 +1,384 @@
+html {
+  zoom: 85%;
+}
+
+body {
+  background: -webkit-linear-gradient(white, #4681b9), #4681b9;
+  background-position: top, bottom;
+  background-size: 1px 1000px, 1px 1px;
+  background-repeat: repeat-x, repeat;
+  background-attachment: scroll;
+
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+a {
+  display: inline flex;
+  margin-top: 5px;
+  color: rgb(55, 0, 117);
+}
+
+
+
+.header {
+  width: inherit;
+  text-align: center;
+}
+
+.text_blueline {
+  font-size: 22px;
+  margin: 0;
+  padding: 5px;
+  margin-top: 2px;
+  margin-left: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.blueline {
+  width: 100%;
+  background: -webkit-linear-gradient(#79a3ce, #a9c1da);
+  box-shadow: 0px -1px 1px 1px #c0e2e5;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  align-self: flex-end;
+}
+
+.blueline-shadow {
+  padding: 1px 0px;
+  margin-bottom: 10px;
+  background-image: #a9c1da;
+  box-shadow: 0px -1px 1px 1px #79a3ce;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.lineframe {
+  width: 100%;
+}
+
+.main {
+  margin-top: 10px;
+  display: inline-block;
+  background-color: white;
+  width: 1400px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(164, 177, 192);
+  border-radius: 25px;
+  box-shadow: 5px 10px 8px rgba(0, 0, 255, 0.4);
+}
+
+.banner {
+  padding: 0;
+  width: 1400px;
+  height: 225px;
+  object-fit: cover;
+  object-position: bottom;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.bind {
+  position: relative;
+  text-align: right;
+}
+
+.login-section {
+  position: absolute;
+  height: 160px;
+  width: 600px;
+  top: 0;
+  right: 0;
+  text-align: top;
+  display: flex;
+  /* border-style: solid;
+    border-width: 2px; */
+  vertical-align: middle;
+}
+
+.checkbox {
+  transform: scale(1.5);
+}
+
+.input,
+.input-form {
+  display: block;
+  padding: 4px;
+  border-color: rgb(173, 207, 255);
+  border-width: 1px;
+  font-size: 23px;
+  width: 65%;
+}
+
+.input-form {
+  width: 90%;
+  margin-bottom: 30px;
+}
+
+.login {
+  height: 100%;
+  width: 50%;
+  text-align: left;
+}
+
+.content {
+  display: block;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  margin-top: 50px;
+
+}
+
+.remember {
+  display: flex;
+  text-align: center;
+}
+
+.help {
+  width: 25px;
+  object-fit: contain;
+}
+
+.button-frame {
+  background-color: #6994c7;
+  height: 37px;
+  display: inline-flex;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.button {
+  width: 98.5%;
+  height: 93%;
+  font-size: 22px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: rgb(255, 255, 255);
+  background: -webkit-linear-gradient(#79a3ce, #b6cadf);
+  border-radius: 4px;
+  border-color: white;
+  border-width: 3px;
+  border-style: solid;
+  transition: 0.05s;
+  align-self: center;
+  transition: 0.15s;
+}
+
+.button:hover {
+  text-shadow: 0 0 5px #fff, 0 0 2px #fff;
+  cursor: pointer;
+}
+
+.button:active {
+  background: -webkit-linear-gradient(#1f5c99, #7d9dc0);
+  text-shadow: 0 0 0;
+}
+
+.forgotten {
+  position: relative;
+  top: 5px;
+  text-decoration: none;
+}
+
+.forgotten:hover {
+  text-decoration: underline;
+}
+
+.page {
+  width: 1395px;
+  display: inline-flex;
+  justify-content: space-between;
+  height:unset;
+}
+
+.page-section {
+  margin: 0;
+  border-width: 1px;
+  width: 48%;
+}
+
+.wellcome {
+  margin-top: 100px;
+  margin-left: 50px;
+  text-align: left;
+}
+
+.top-frame {
+  width: 85%;
+  height: 100px;
+  display: inline-block;
+}
+
+.overline {
+  font-size: 45px;
+  text-align: left;
+  width: 80%;
+}
+
+.info {
+  font-size: 23px;
+  margin-bottom: 35px;
+}
+
+.lightblue {
+  color: rgb(15, 67, 255);
+}
+
+.frame {
+  background-color: rgb(211, 243, 255);
+  width: 100%;
+  height: 1000px;
+  margin-top: 50px;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(180, 211, 222);
+}
+
+.innerframe {
+  display: flex;
+  width: 200%;
+  height: 90%;
+  margin-left: -100%;
+}
+
+.form {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.question {
+  text-align: left;
+}
+
+.answere {
+  display: block;
+  text-align: left;
+  margin-top: 19.5px;
+}
+
+.half-frame {
+  height: 100%;
+  font-size: 23px;
+  text-align: left;
+}
+
+.gender {
+  width: 95%;
+  margin-top: -7px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkbox-circle {
+  transform: scale(1.5);
+}
+
+.choiceFormat {
+  margin-left: -25px;
+  margin-top: 15px;
+}
+
+select {
+  margin: 0px 0px;
+  margin-top: 18px;
+  margin-bottom: 5px;
+  height: 40px;
+  width: 267px;
+  font-size: 23px;
+}
+
+.button-insert-picture {
+  font-size: 22px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  background-color: rgb(191, 191, 184);
+  border-color: rgb(255, 255, 255);
+}
+
+.registration {
+  margin-top: -200px;
+}
+
+footer {
+  height: 50px;
+  padding: 15px;
+}
+
+.footerContent, .copyright, .stick {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 0px;
+  margin-top: 3px;
+}
+
+.stick {
+  display: inline-block;
+  margin: 0;
+}
+
+.footerContent:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.reference {
+  font-weight: bold;
+  margin: 0;
+  padding: 10px 10px;
+  display: inline-block;
+  border-style: solid;
+  border-right-style: none;
+  border-width: 2px;
+  background-color: rgb(255, 249, 166);
+  font-size: 18px;
+}
+
+.reference:hover {
+  cursor: default;
+}
+
+.reference-frame {
+  height: 40px;
+  margin-top: 13px;
+  margin-right: 30px;
+  margin-bottom: 26px;
+  text-align: end;
+  /* border-style: solid; */
+  border-width: 1px;
+  
+}
+
+.arrow-right {
+  margin: -21px -23px;
+  position: absolute;
+  display: inline-block;
+  width: 0; 
+  height: 0; 
+  border-top: 21px solid transparent;
+  border-bottom: 21px solid transparent;
+  
+  border-left: 21px solid rgb(255, 249, 166);
+}
+
+.arrow-right-frame {
+  margin-top: 0px;
+  position: absolute;
+  display: inline-block;
+  width: 0; 
+  height: 0; 
+  border-top: 22.64px solid transparent;
+  border-bottom: 22.64px solid transparent;
+  
+  border-left: 22.64px solid rgb(0, 0, 0);
+}
+
+

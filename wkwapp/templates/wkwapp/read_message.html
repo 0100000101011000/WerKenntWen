@@ -1,0 +1,98 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+<link rel="stylesheet" href="{% static 'styles/messages.css' %}">
+<script>
+    function open() {
+        console.log('Öffnen');
+        window.open({% url 'home' %});
+    }
+</script>
+
+<div class="main">
+
+    <header class="header" style="background-image: url({% static 'images/banner.jpg' %});">
+        <div class="headcontain">
+
+
+            
+            <!-- SEARCH AREA -->
+
+
+            {% include 'head_area.html' %}
+
+
+            <!-- HEADBAR -->
+
+            <div class="headbar">
+                <a class="link_headbar" href="{% url 'home' %}">Start</a>
+                <a class="link_headbar" href="">Neues</a>
+                <a class="link_headbar" href="{% url 'me' %}">Ich</a>
+                <a class="link_headbar" href="{% url 'know' %}">Ich kenne</a>
+                <a class="link_headbar" href="">Gruppen</a>
+                <a class="choosen" href="{% url 'messagesPage' user.id 1 %}">Nachrichen</a>
+                <a class="link_headbar" href="">Kalender</a>
+                <a class="link_headbar" href="">Einstellungen</a>
+            </div>
+
+        </div>
+
+    </header>
+
+    <div class="receivedSentFrame">
+        <div>
+            <div class="receivedSent"><a class="received" href="">Posteingang</a></div>
+            <div class="underlined"></div>
+        </div>
+        <div>
+            <div class="receivedSent"><a class="sent" href="">Gesendet</a></div>
+            <div class="underline"></div>
+        </div>
+        
+               
+    </div>
+    
+    <div class="page">
+
+        
+
+
+        <!-- LEFT PAGE SECTION -->
+
+        <div class="page-section" style="width: 2100px; margin-left: 25px;">
+            <h1 class="headline">
+                Nachrichten
+            </h1>
+            <div>
+                <button class="writeMessageButton">Nachricht verfassen</button>
+            </div>
+            <div class="blueBox">
+               <p>{{ toread }}</p>
+            </div>
+            <div>
+                <p>Die Nachrichten werden nach 30 Tagen automatisch gelöscht.</p>
+            </div>
+            
+
+            
+        </div>
+
+
+        <!-- RIGHT PAGE SECTION -->
+
+        <div class="page-section" style="margin: 50px 20px">
+            
+            
+        </div>
+
+
+
+    </div>
+
+</div>
+
+{% endblock content %}

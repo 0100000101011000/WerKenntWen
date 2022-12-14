@@ -1,0 +1,386 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+
+
+<div class="main">
+
+    <header class="header">
+        
+        <div class="bind">
+            
+            <img class="banner" src="{% static 'images/banner.jpg' %}">
+
+
+            <!-- LOGIN SECTION -->
+
+            <div>
+
+                {% if messages %}
+                    <ul class="messages">
+                    {% for message in messages %}
+                        <li style="position: absolute;">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                
+                
+                <form class="login-section" method="post" action="">
+                    
+                    
+                    {% csrf_token %}
+                    
+                    <!-- ASK FOR E-MAIL -->
+
+                    <div class="login">
+                        <p class="content">E-Mail:</p>
+                        <input class="input" style="width:265px;" type="text" name="usermail">
+                        <div class="remember">
+                            <input class="checkbox" type="checkbox">
+                            <p style="margin:5px 5px;">Automatisch einloggen</p>
+                            <a href="">
+                                <img class="help" src="{% static 'images/pngegg.png' %}">
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                    <!-- ASK FOR PASSWORD AND SUBMIT BUTTON -->
+
+                    <div class="login">
+                        <p class="content">Passwort:</p>
+                        <input class="input" style="display: inline-block;" type="password" name="userpswrd">
+                        <div class="button-frame">
+                            <button type="submit" class="button" value="Login">
+                                Login
+                            </button>
+                        </div>
+
+                        <a class="forgotten" href=""><span class="lightblue-text">Password vergessen?</span></a>
+
+
+                    </div>
+
+                    
+
+                </form>
+
+
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <div class="page">
+
+
+        <!-- LEFT PAGE SECTION -->
+
+        <div class="page-section">
+            <div class="wellcome">
+                <p class="overline">Herzlich willkommen bei wer-kennt-wen.de</p>
+                <p class="info">
+                    <b>Bei wer-kennt-wen.de findest Du Deine Freunde,
+                        Familie, Bekannte, <span style="color:rgb(0, 36, 237);">Vereinskammeraden</span>,
+                        ehemalige und aktuelle <span style="color:rgb(0, 36, 237);">Klassenkameraden</span>
+                        und Leute, die Du aus den Augen verloren hast!</b>
+                </p>
+
+                <p class="info">
+                    <b>Sag anderen, was Du gerade machst!</b>
+                    Zeige Deine schönsten Schnappschüsse oder
+                    Urlaubsfotos und verlinke Dich und Deine
+                    <span class="lightblue">Freunde</span>
+                    auf den Bildern.
+                </p>
+
+                <p class="info">
+                    <b>Bleib in Kontakt!</b> Mit Leuten aus Deinem
+                    <span class="lightblue">Ort</span> oder Deiner
+                    <span class="lightblue">Schule</span> kannst
+                    Du Nachrichten schreiben, chatten und gemeinsame
+                    Gruppen gründen.
+                </p>
+
+                <p class="info">
+                    <b>Lerne neue <span style="color:rgb(0, 87, 237);">Leute</span>
+                        kennen, die Deine Interessen teilen!</b>
+                    In zahlreichen <span class="lightblue">Gruppen</span>
+                    und <span class="lightblue">Vereinen</span> tauschen
+                    sich Interessierte zu ihren Lieblingsthemen aus.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- RIGHT PAGE SECTION -->
+
+        <div class="page-section">
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- APPLICATION FORM -->
+
+                <div class="frame">
+                    <div class="top-frame">
+                        <p class="overline">
+                            Jetzt anmelden:
+                        </p>
+                    </div>
+
+                    
+      
+                    <div class="innerframe">
+
+                        <div class="half-frame" style="width: 100%;">
+                           
+                            <div class="reference-frame">
+                                {% if fails.0 %}
+                                <div>
+                                    <p class="reference">Dein Vorname fehlt</p>
+                                    <div class="arrow-right-frame">
+                                        <div class="arrow-right">
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}                          
+                            </div>
+                            <div class="reference-frame">
+                                {% if fails.1 %}
+                                <div>
+                                    <p class="reference">Dein Nachname fehlt</p>
+                                    <div class="arrow-right-frame">
+                                        <div class="arrow-right">
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}                          
+                            </div>
+                            <div class="reference-frame">
+                                {% if fails.2 %}
+                                <div>
+                                    <p class="reference">Bitte gib dein Geschlecht an</p>
+                                    <div class="arrow-right-frame">
+                                        <div class="arrow-right">
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}                          
+                            </div>
+                            <div class="reference-frame">
+                                {% if fails.3 %}
+                                <div>
+                                    <p class="reference">E-Mail Adresse erforderlich</p>
+                                    <div class="arrow-right-frame">
+                                        <div class="arrow-right">
+                                        </div>
+                                    </div>
+                                </div>
+                                {% elif fails.4 %}
+                                <div>
+                                    <p class="reference">Es besteht bereits ein Konto mit dieser E-Mail Adresse</p>
+                                    <div class="arrow-right-frame">
+                                        <div class="arrow-right">
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}                          
+                            </div>
+                            <div class="reference-frame">
+                                {% if fails.5 %}
+                                <div>
+                                    <p class="reference">Das Passwort muss mindestens sechst Zeichen lang sein</p>
+                                    <div class="arrow-right-frame">
+                                        <div class="arrow-right">
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}                          
+                            </div>
+                            <div class="reference-frame">
+                                {% if fails.6 %}
+                                <div>
+                                    <p class="reference">Das Passwort stimmt nicht überein</p>
+                                    <div class="arrow-right-frame">
+                                        <div class="arrow-right">
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}                          
+                            </div>
+                            <div class="reference-frame" style="margin-top: 48px;">
+                                {% if fails.7 %}
+                                <div>
+                                    <p class="reference">Bitte gib dein Geburtsjahr an</p>
+                                    <div class="arrow-right-frame">
+                                        <div class="arrow-right">
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}                          
+                            </div>
+                            <div class="reference-frame" style="margin-top: 250px;">
+                                {% if fails.8 %}
+                                <div>
+                                    <p class="reference">Du musst mit unseren AGBs einverstanden sein</p>
+                                    <div class="arrow-right-frame">
+                                        <div class="arrow-right">
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}                          
+                            </div>
+
+                            
+                        </div>
+
+
+
+                  
+
+
+                        <!-- QUESTIONS -->
+
+                        <div class="half-frame" style="margin-right: 100px;">
+                            
+                            <div class="question">                                
+                                <p class="form">
+                                    Vorname
+                                </p> 
+                                <p class="form">
+                                    Nachname
+                                </p>                                 
+                                <p class="form">
+                                    Geschlecht
+                                </p>    
+                                <p class="form">
+                                    E-Mail
+                                </p>                                   
+                                <div style="display: flex; align-items: center;">
+                                    <p style="margin: 0; padding: 0; display: inline-block;">
+                                        Passwort
+                                    </p>
+                                    <a href="">
+                                        <img class="help" style="margin-left: 100px;"
+                                            src="{% static 'images/pngegg.png' %}">
+                                    </a>
+                                </div>
+
+                                
+
+
+                                <p style="width: 100%; margin-top: 30px;" class="form">
+                                    Passwort
+                                    wiederholen
+                                </p>
+                                <p style="margin-top: -3px;" class="form">
+                                    Geburtsjahr
+                                </p>
+                                <p class="form">
+                                    Bild
+                                </p>
+                                <p class="form">
+                                    Hast du eine TAN?
+                                </p>
+
+                                <div style="display: flex; align-items: center; margin-top: -40px;">
+                                    <p style="margin:0; padding:0; font-size:18px;">
+                                        (optional)
+                                    </p>
+                                    <a href="">
+                                        <img class="help" style="margin-left: 120px;"
+                                            src="{% static 'images/pngegg.png' %}">
+                                    </a>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <!-- ANSWERE -->
+
+                        <div class="half-frame" style="width: 300px; margin-right: 10px;">
+                            <div class="answere">
+                                <input class="input-form" type="text" name="first_name">
+                            </div>
+                            <div class="answere">
+                                <input class="input-form" type="text" name="last_name">
+                            </div>
+                            <div class="gender">
+                                <input class="checkbox-circle" type="radio" id="female" name="switch" value="F">
+                                <label class="choiceFormat" for="Choice1">Weiblich</label>
+                                <input class="checkbox-circle" type="radio" id="male" name="switch" value="M">
+                                <label class="choiceFormat" for="Choice2">Männlich</label>
+
+                            </div>
+                            <div class="answere">
+                                <input class="input-form" type="email" name="email">
+                            </div>
+                            <div class="answere">
+                                <input class="input-form" type="password" name="password1">
+                            </div>
+                            <div class="answere">
+                                <input class="input-form" type="password" name="password2">
+                            </div>
+                            <select name="birthYear" id="birth">
+                                <option value="value">Bitte Auswählen...</option>
+
+                            </select>
+
+                            <script>
+                                const date = new Date()
+                                for (let i = date.getFullYear(); i >= 1900; i--) {
+                                    birth.innerHTML += `
+                                    <option value="${i}">${i}</option>
+                                    `;
+                                };
+                            </script>
+                            <input name="upload" type="file" class="button-insert-picture" id="newProfilePicture"
+                                accept=".png, .jpg, .jpeg">
+                            <div class="answere">
+                                <input class="input-form" type="text" id="tan">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="registration">
+                    <div class="button-frame" style="width: 200px;">
+                        <input type="submit" class="button" value="Registrieren">
+                        </input>
+                    </div>
+                    <div style="justify-content: center;" ;>
+                        <div style="width:395px; display: inline-flex; justify-content:space-between">
+                            <input type="checkbox" class="checkbox" id="conditions" name="agb" value="accepted">
+                            <p style="display: inline-block;">
+                                Ich habe die <a href="">AGB</a> gelesen und stimme zu.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </form>
+
+
+
+        </div>
+
+    </div>
+    <div style="height: 300px;"></div>
+    
+
+
+
+</div>
+
+{% endblock content %}

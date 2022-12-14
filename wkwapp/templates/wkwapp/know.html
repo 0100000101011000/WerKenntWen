@@ -1,0 +1,112 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+<link rel="stylesheet" href="{% static 'styles/messages.css' %}">
+
+
+
+
+
+
+<div class="main">
+
+    <header class="header" style="background-image: url({% static 'images/banner.jpg' %});">
+        <div class="headcontain">
+
+
+
+            {% include 'head_area.html' %}
+
+
+            <!-- HEADBAR -->
+
+            <div class="headbar">
+                <a class="link_headbar" href="{% url 'home' %}">Start</a>
+                <a class="link_headbar" href="">Neues</a>
+                <a class="link_headbar" href="{% url 'me' %}">Ich</a>
+                <a class="choosen" href="{% url 'know' %}">Ich kenne</a>
+                <a class="link_headbar" href="">Gruppen</a>
+                <a class="link_headbar" href="{% url 'messagesPage' user.id 1 %}">Nachrichen</a>
+                <a class="link_headbar" href="">Kalender</a>
+                <a class="link_headbar" href="">Einstellungen</a>
+            </div>
+
+        </div>
+
+    </header>
+
+    <div class="receivedSentFrame">
+        <div>
+            <div class="receivedSent"><a class="received" href="{% url 'everyone' %}">Alle bei wkw</a></div>
+            <div class="underline"></div>
+        </div>
+        <div>
+            <div class="receivedSent"><a class="sent" href="{% url 'know' %}">Ich kenne</a></div>
+            <div class="underlined"></div>
+        </div>
+
+
+    </div>
+
+    <div class="page">
+
+
+
+
+        <!-- LEFT PAGE SECTION -->
+
+        <div class="page-section" style="width: 2100px; margin-left: 25px;">
+            <h1 class="headline">
+                Alle die du kennst:
+            </h1>
+            <div class="lineframe" style="margin-bottom: 100px">
+                <div class="blueline-shadow">
+                    <div class="blueline">
+                        <p class="text_blueline" style="width: 250px;">
+                            Leute
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% if no_one %}
+            <div style="margin-top: -50px; margin-bottom: 50px">
+                <p>
+                    Du kennst noch niemanden hier.
+                </p>
+            </div>     
+            {% endif %}
+            <div style="width: 100%;">
+                {% for frend in frends %}
+                {% if frend.id == user.id %}
+                <a style="display: inline-block;" href="{% url 'me' %}">
+                    
+                    <div style="text-align: center;">
+                        <img style="width: 150px;" src="{{ frend.avatar.url }}" alt="">
+                        <p class="frendsFount" style="margin: 0; font-size: 18px;">Du</p>
+                    </div>
+                </a>
+                {% else %}
+                <a style="display: inline-block;" href="{% url 'visitedUser' frend.id %}">           
+                    <div style="text-align: center;">
+                        <img style="width: 150px;" src="{{ frend.avatar.url }}" alt="">
+                        <p class="frendsFount" style="margin: 0; font-size: 18px;">{{ frend.first_name }} {{ frend.last_name }}</p>
+                    </div>
+                </a>
+                {% endif %}
+                {% endfor %}          
+            </div>
+
+
+        </div>
+        <div style="width: 45px;">
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

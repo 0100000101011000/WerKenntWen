@@ -1,0 +1,119 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+<link rel="stylesheet" href="{% static 'styles/messages.css' %}">
+<script>
+    function open() {
+        console.log('Öffnen');
+        window.open({% url 'home' %});
+    }
+</script>
+
+<div class="main">
+
+    <header class="header" style="background-image: url({% static 'images/banner.jpg' %});">
+        <div class="headcontain">
+
+
+            
+            {% include 'head_area.html' %}
+
+
+            <!-- HEADBAR -->
+
+            <div class="headbar">
+                <a class="link_headbar" href="{% url 'home' %}">Start</a>
+                <a class="link_headbar" href="">Neues</a>
+                <a class="link_headbar" href="{% url 'me' %}">Ich</a>
+                <a class="link_headbar" href="{% url 'know' %}">Ich kenne</a>
+                <a class="link_headbar" href="">Gruppen</a>
+                <a class="choosen" href="{% url 'messagesPage' user.id 1 %}">Nachrichen</a>
+                <a class="link_headbar" href="">Kalender</a>
+                <a class="link_headbar" href="">Einstellungen</a>
+            </div>
+
+        </div>
+
+    </header>
+
+    <div class="receivedSentFrame">
+        <div>
+            <div class="receivedSent"><a class="received" href="">Posteingang</a></div>
+            <div class="underlined"></div>
+        </div>
+        <div>
+            <div class="receivedSent"><a class="sent" href="">Gesendet</a></div>
+            <div class="underline"></div>
+        </div>
+        
+               
+    </div>
+    
+    <div class="page">
+
+        
+
+
+        <!-- LEFT PAGE SECTION -->
+
+        <div class="page-section" style="width: 2100px; margin-left: 25px;">
+            <h1 class="headline">
+                Nachrichten
+            </h1>
+            <div>
+                <button class="writeMessageButton">Nachricht verfassen</button>
+            </div>
+            <div class="blueBox">
+                {% if postlen > 0 %}
+                    <div class="flex">
+                        <div>
+                            {% for p in post %}
+                                <div style="width: 300px;"><p class="messageText">Von:&nbsp;{{ p }}</p></div>                  
+                            {% endfor %}
+                        </div>
+                        <div>
+                            {% for mess in received %}
+                                <div  class="flex">
+                                    <div>
+                                        <p class="messageText">Betreff:&nbsp;{{ mess.subject }}</p>
+                                    </div>                            
+                                    <div style="margin-left: 280px" class="flex">
+                                        <div><a href="{% url 'read_message' mess.id 1 %}" class="linkButton">Öffnen</a></div>
+                                        <div><a href="" class="linkButton">Antworten</a></div>
+                                        <div><a href="{% url 'messagesPage' mess.id 3 %}" class="linkButton">Löschen</a></div>
+                                    </div>
+                                </div>                               
+                            {% endfor %}
+                        </div>     
+                    </div>            
+                {% else %}
+                    <p>Es befinden sich keine Nachrichten in deinem Posteingang</p>
+                {% endif %}
+            </div>
+            <div>
+                <p>Die Nachrichten werden nach 30 Tagen automatisch gelöscht.</p>
+            </div>
+            
+
+            
+        </div>
+
+
+        <!-- RIGHT PAGE SECTION -->
+
+        <div class="page-section" style="margin: 50px 20px">
+            
+            
+        </div>
+
+
+
+    </div>
+
+</div>
+
+{% endblock content %}

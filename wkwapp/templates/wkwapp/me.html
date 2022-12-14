@@ -1,0 +1,302 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+<link rel="stylesheet" href="{% static 'styles/me.css' %}">
+
+<div style="height: 2000px;" class="main">
+
+    <header class="header" style="background-image: url({% static 'images/banner.jpg' %});">
+        <div class="headcontain">
+
+
+
+            {% include 'head_area.html' %}
+
+
+            <!-- HEADBAR -->
+
+            <div class="headbar">
+                <a class="link_headbar" href="{% url 'home' %}">Start</a>
+                <a class="link_headbar" href="">Neues</a>
+                <a class="choosen" href="">Ich</a>
+                <a class="link_headbar" href="{% url 'know' %}">Ich kenne</a>
+                <a class="link_headbar" href="">Gruppen</a>
+                <a class="link_headbar" href="{% url 'messagesPage' user.id 1 %}">Nachrichen</a>
+                <a class="link_headbar" href="">Kalender</a>
+                <a class="link_headbar" href="">Einstellungen</a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <div class="page">
+
+
+        <!-- LEFT PAGE SECTION -->
+
+        <div class="page-section" style="width: 2100px; margin-left: 25px;">
+            <div id="changeName">
+                <h1 class="headline">
+                    {{ user.first_name }}'s Seite
+                </h1>
+            </div>
+
+            <p class="paragraph">
+                Das bist Du&#33;
+            </p>
+            <div class="firstSteps">
+                <div class="lineframe">
+                    <div class="blueline-shadow">
+                        <div class="blueline">
+                            <p class="text_blueline">
+                                Infos
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="paragraph">
+                        Alle Infos in blauer Schrift können angeklickt werden&dot;
+                    </p>
+                    <div class="flex" style="justify-content: space-between;">
+                        <div class="justFrame">
+
+                            <div class="imageAlignText">
+                                <p class="infoHeader">
+                                    Allgemeines
+                                </p>
+                                <a href="">
+                                    <img class="icon" src="{% static 'images/icons/pancel.png' %}" alt="">
+                                </a>
+                                
+                            </div>
+
+                            <div id="table">
+                                <table class="tableSpace">
+                                    <tr>
+                                        <td class="question">Name</td>
+                                        <td><button class = answereMe>{{ user.first_name }}&nbsp;{{ user.last_name }}</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="question">Mitglied seit</td>
+                                        <td class="noEdit">{{ user.date_joined.date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="question">Aktualisiert</td>
+                                        <td class="noEdit">{{ user.last_login.date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="question">Geschlecht</td>
+                                        {% if user.gender == 'M' %}
+                                        <td><button class = answereMe>Männlich</button></td>
+                                        {% else %}
+                                        <td><button class = answereMe>Weiblich</button></td>
+                                        {% endif %}
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="imageAlignText">
+                                <p class="infoHeader">
+                                    Kontakt
+                                </p>
+                                <a href="">
+                                    <img class="icon" src="{% static 'images/icons/pancel.png' %}" alt="">
+                                </a>
+                                
+                            </div>
+
+                        </div>
+                        
+                        <div class="justFrame">
+                            <div class="imageAlignText">
+                                <p class="infoHeader">
+                                    Persönliches
+                                </p>
+                                <a href="">
+                                    <img class="icon" src="{% static 'images/icons/pancel.png' %}" alt="">
+                                </a>     
+                            </div>
+                            <div class="sizeGiver">
+                                <textarea disabled class="personal" name="personal" id="" cols="30" rows="10"
+                                    placeholder="Du hast hier noch nichts eingetragen"></textarea>
+                            </div>
+
+                            <div id="table">
+                            </div>
+
+                            <div class="imageAlignText">
+                                <p class="infoHeader">
+                                    Einladungen
+                                </p>
+                            </div>
+
+                            <div>
+                                <table>
+                                    <tr>
+                                        <td class="question">Eingeladen von</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="question">Erfolgreich eingeladen</td>
+                                        <td><button class="answereMe">unbedingt Leute einladen&#33;</button></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="firstSteps">
+                <div class="lineframe">
+                    <div class="blueline-shadow">
+                        <div class="blueline">
+                            <p class="text_blueline">
+                                {% if frends_amount == 1 %}
+                                Du kennst {{ frends.0.first_name }} {{ frends.0.last_name }}
+                                {% elif frends_amount > 1 %}
+                                Du kennst {{ frends_amount }} Leute
+                                {% else %}
+                                Du kennst noch keine Leute
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contentContainer2">
+                    {% if frends_amount == 0 %}
+                    <p class="blockText, paragraph">
+                      Du kennst noch keine Leute hier.
+                    </p>
+                    {% else %}
+
+                    
+                    
+                    <div class="someFrends">
+                        {% for frend in limited_frends %}
+                        {% if frend.id == user.id %}
+                        <a href="{% url 'me' %}" style="margin-bottom: 50px;">                           
+                            <div style="text-align: center; margin: 20px 20px;">
+                                <p class="frendsFount"style="margin: 0; font-size: 18px;">Du</p>
+                                <img style="width: 120px;" src="{{ frend.avatar.url }}" alt="">
+                            </div>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'visitedUser' frend.id %}" style="margin-bottom: 50px;">
+                        
+                            <div style="text-align: center; margin: 20px 20px;">
+                                <img style="width: 120px;" src="{{ frend.avatar.url }}" alt="">
+                                <p class="frendsFount">{{ frend.first_name }} {{ frend.last_name }}</p>
+                            </div>
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    {% if frends_amount > 6 %}
+                    <div style="width: 100%; text-align: center; margin-top: -30px;">
+                        <a class="to_underline" href="{% url 'know' %}">Alle die Du kennst</a>
+                    </div>
+                    {% endif %}
+
+                    {% endif %}
+                </div>
+            </div>
+            <div>
+                <div class="lineframe">
+                    <div class="blueline-shadow">
+                        <div class="blueline">
+                            <p class="text_blueline">
+                                Was machst du gerade&quest;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="contentContainer2">
+                        <textarea class="currentActives" placeholder="Was machst du gerade&quest;"
+                            name="currentActivs" id="" cols="30" rows="10"></textarea>
+                    </div>
+
+                    <div style="text-align:center; width: 30%;">
+                        <p id="count">noch <b>160</b> Zeichen</p>
+                        <button class="sendButton">
+                            <div class="buttonContent">
+                                <img class="icon" src="{% static 'images/icons/speechBubble.png' %}" alt="">
+                                <p class="blockText">Senden</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- RIGHT PAGE SECTION -->
+
+
+
+        <div class="page-section" style="margin: 50px 20px">
+
+
+            <!-- profilePicture -->
+
+            <div class="pictureFrame" id="changePicture">
+                <img style="width: 300px; height: auto;" class="profilePicture" src="{{ user.avatar.url }}">
+            </div>
+
+            <div style="width: 100%;">
+                <div class="flex">
+                    <img class="icons" src="{% static 'images/icons/several.png' %}" alt="">
+                    <div style="margin-bottom: 20px;">
+                        <button class="invisibleButton">Bild ändern</button>
+                        <button class="invisibleButton">Meine Seite bearbeiten</button>
+                        <button class="invisibleButton">Meine Seite für andere</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="firstSteps">
+                <div class="lineframe">
+                    <div class="blueline-shadow">
+                        <div class="blueline">
+                            <p class="text_blueline" style="width: 250px;">
+                                Wo Du Leute kennst
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sizeGiver" style="height: 300px">
+                    <img class="map" src="{% static 'images/icons/germanyMap.png' %}">
+                </div>
+            </div>
+            <div class="firstSteps">
+                <div class="lineframe">
+                    <div class="blueline-shadow">
+                        <div class="blueline">
+                            <p class="text_blueline" style="width: 250px;">
+                                Deine Fotoalben
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sizeGiver" style="text-align: left;">
+                    <div class="flex" style="align-items:center">
+                        <img class="icon" style="width: 55px; height:auto" src="{% static 'images/icons/newAlbum.png' %}">
+                        <p class="invisibleButton">Neues Album anlegen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

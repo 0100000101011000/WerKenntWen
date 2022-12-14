@@ -1,0 +1,46 @@
+<!-- SEARCH AREA -->
+
+
+<div class="search">
+
+    <div class="greetLogout" id="userGreet">
+        <div class="greetFrame">
+            <p class="greet">
+                Herzlich Willkommen&#44;&nbsp;{{ user.first_name }}&#33;&nbsp;
+            </p>
+            <div style="display: inline-block;">
+                <p class="brackets">&#91;<a class="text_logout" href="{% url 'index' %}">Ausloggen</a>&#93;</p>
+            </div>
+        </div>
+    </div>
+
+
+    <form action="{% url 'search_user' %}" method="post" class="searchContainerContainer">
+        {% csrf_token %}
+        <div class="searchContainer">
+            <div class="wkwWeb">
+                <button class="wkw">
+                    wkw
+                </button>
+                <button class="web">
+                    web
+                </button>
+            </div>
+
+
+            <div class="searchFind">
+                    {% if search_input != None %}
+                    <input name="search_field" class="searchbar" style="display: inline-block;" type="text" value="{{ search_input }}">
+                    {% else %}
+                    <input name="search_field" class="searchbar" style="display: inline-block;" type="text">
+                    {% endif %}
+                    <div class="button-frame">
+                        <button type="submit" class="button">
+                            Finden
+                        </button>
+                    </div>
+            </div>
+            <a class="searchProfile" style="margin-top: 2px;" href="">Profi-Suche</a>
+        </div>
+    </form>
+</div>
