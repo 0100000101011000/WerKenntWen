@@ -30,8 +30,8 @@ def askUser(request):
 ############################ A C C E P T ###############################
 def acceptUser(request):
 
-    user = request.POST['requested']
-    requester = request.POST['requester']
+    user = request.POST['requester']
+    requester = request.POST['requested']
 
     to_accept = Conections.objects.get(
         person_two_id=user, person_one_id=requester)
