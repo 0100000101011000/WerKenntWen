@@ -62,7 +62,7 @@ def everyone(request):
 def know_requests(request):
     user = request.user
     users = []
-    population = 0
+    amount = 0
 
     myFunc.set_last_request(user)  # Spechert den Zeitpunkt der Abfrage
 
@@ -74,9 +74,9 @@ def know_requests(request):
     for know_request in requests:
         requester_id = know_request.person_one_id
         users.append(CustomUser.objects.get(id=requester_id))
-        population += 1
+        amount += 1
 
-    context = {'users': users, 'user': user, 'population': population}
+    context = {'users': users, 'user': user, 'amount':amount}
 
     return render(request, 'wkwapp/know_requests.html', context)
 
@@ -104,18 +104,18 @@ def know(request):
 def send_message(request, id):
     user = request.user
     receiver = CustomUser.objects.get(id=id)
-    tosend = request.POST.get('tosend')
+    to_send = request.POST.get('to_send')
     subject = request.POST.get('subject')
 
     myFunc.set_last_request(user)  # Spechert den Zeitpunkt der Abfrage
 
     if type(subject) != str:
         subject = ' '
-    if type(tosend) == str:
-        if len(tosend) > 0:
+    if type(to_send) == str:
+        if len(to_send) > 0:
             myFunc.sendMessage(
-                sender=user.id, receiver=receiver.id, message=tosend, subject=subject)
-            messages.error(request, type(tosend))
+                sender=user.id, receiver=receiver.id, message=to_send, subject=subject)
+            messages.error(request, type(to_send))
         # return redirect('home')
     context = {'user': user, 'receiver': receiver}
 
@@ -260,6 +260,7 @@ def home(request):
     user = request.user
     online_users_amount = 0
     online_users = []
+    rows = [':3','3:6','6:9']
 
     myFunc.set_last_request(user)  # Spechert den Zeitpunkt der Abfrage
 
@@ -286,7 +287,8 @@ def home(request):
         'requester': requester,
         'len_requests': len_requests,
         'online_users_amount': online_users_amount,
-        'online_users': online_users
+        'online_users': online_users,
+        'rows':rows
     }
 
     return render(request, 'wkwapp/home.html', context)

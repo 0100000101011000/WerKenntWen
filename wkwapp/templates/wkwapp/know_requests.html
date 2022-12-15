@@ -47,10 +47,10 @@
 
         <div class="page-section" style="width: 2100px; margin-left: 25px;">
             <h1 class="headline">
-                {% if population == 1 %}
+                {% if amount == 1 %}
                 {{ users.0.first_name }} {{ users.0.last_name }} fragt, ob ihr euch kennt
                 {% else %}
-                {{ population }} Leute fragen, ob sie dich kennen
+                {{ amount }} Leute fragen, ob sie dich kennen
                 {% endif %}
             </h1>
             <div class="lineframe" style="margin-bottom: 100px">
@@ -67,8 +67,10 @@
             </div>
 
             {% with send_to='acceptUser' %}
-            {% with answere='Anfrage akzeptiert' %}        
+            {% with answere='Anfrage akzeptiert' %}   
+
             {% include 'list_users.html' %}
+            
             {% endwith %}
             {% endwith %}
 
