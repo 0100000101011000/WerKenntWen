@@ -170,39 +170,16 @@
                 </div>
                 <div class="contentContainer">
                     <div class="fullWidth" id="otherPeople" style="margin-top: 20px;">
-                        <div class="flex" style="width: 100%;">
-                            {% if online_users_amount > 0 %}
-                            <div class="third"><a href="{% url 'visitedUser' online_users.0.id %}"><img style="width: 100px;" src="{{ online_users.0.avatar.url }}" alt=""></a></div>
-                            {% endif %}
-                            {% if online_users_amount > 1 %}
-                            <div class="third"><a href="{% url 'visitedUser' online_users.1.id %}"><img style="width: 100px;" src="{{ online_users.1.avatar.url }}" alt=""></a></div>
-                            {% endif %}
-                            {% if online_users_amount > 2 %}
-                            <div class="third"><a href="{% url 'visitedUser' online_users.2.id %}"><img style="width: 100px;" src="{{ online_users.2.avatar.url }}" alt=""></a></div>
-                            {% endif %}
-                        </div>
-                        <div class="flex" style="width: 100%;">
-                            {% if online_users_amount > 3 %}
-                            <div class="third"><a href="{% url 'visitedUser' online_users.3.id %}"><img style="width: 100px;" src="{{ online_users.3.avatar.url }}" alt=""></a></div>
-                            {% endif %}
-                            {% if online_users_amount > 4 %}
-                            <div class="third"><a href="{% url 'visitedUser' online_users.4.id %}"><img style="width: 100px;" src="{{ online_users.4.avatar.url }}" alt=""></a></div>
-                            {% endif %}
-                            {% if online_users_amount > 5 %}
-                            <div class="third"><a href="{% url 'visitedUser' online_users.5.id %}"><img style="width: 100px;" src="{{ online_users.5.avatar.url }}" alt=""></a></div>
-                            {% endif %}
-                        </div>
-                        <div class="flex" style="width: 100%;">
-                            {% if online_users_amount > 6 %}
-                            <div class="third"><a href="{% url 'visitedUser' online_users.6.id %}"><img style="width: 100px;" src="{{ online_users.6.avatar.url }}" alt=""></a></div>
-                            {% endif %}
-                            {% if online_users_amount > 7 %}
-                            <div class="third"><a href="{% url 'visitedUser' online_users.7.id %}"><img style="width: 100px;" src="{{ online_users.7.avatar.url }}" alt=""></a></div>
-                            {% endif %}
-                            {% if online_users_amount > 8 %}
-                            <div class="third"><a href="{% url 'visitedUser' online_users.8.id %}"><img style="width: 100px;" src="{{ online_users.8.avatar.url }}" alt=""></a></div>
-                            {% endif %}
-                        </div>
+          
+                      {% for row in rows %}
+                      <div class="flex" style="width: 100%;">
+     
+                          {% for on_user in online_users|slice:row %}
+                          <div class="third"><a href="{% url 'visitedUser' on_user.id %}"><img style="width: 100px;" src="{{ on_user.avatar.url }}" alt=""></a></div>
+                          {% endfor %}
+         
+                      </div> 
+                      {% endfor %}
                                  
                     </div>
                 </div>
@@ -246,39 +223,23 @@
                     </div>
                 </div>
                 <div class="fullWidth" id="otherPeople" style="margin-top: 20px;">
+            
+                    {% for row in rows %}
                     <div class="flex" style="width: 100%;">
-                        {% if userLen > 0 %}
-                        <div class="third"><a href="{% url 'visitedUser' users.0.id %}"><img style="width: 100px;" src="{{ users.0.avatar.url }}" alt=""></a></div>
-                        {% endif %}
-                        {% if userLen > 1 %}
-                        <div class="third"><a href="{% url 'visitedUser' users.1.id %}"><img style="width: 100px;" src="{{ users.1.avatar.url }}" alt=""></a></div>
-                        {% endif %}
-                        {% if userLen > 2 %}
-                        <div class="third"><a href="{% url 'visitedUser' users.2.id %}"><img style="width: 100px;" src="{{ users.2.avatar.url }}" alt=""></a></div>
-                        {% endif %}
-                    </div>
-                    <div class="flex" style="width: 100%;">
-                        {% if userLen > 3 %}
-                        <div class="third"><a href="{% url 'visitedUser' users.3.id %}"><img style="width: 100px;" src="{{ users.3.avatar.url }}" alt=""></a></div>
-                        {% endif %}
-                        {% if userLen > 4 %}
-                        <div class="third"><a href="{% url 'visitedUser' users.4.id %}"><img style="width: 100px;" src="{{ users.4.avatar.url }}" alt=""></a></div>
-                        {% endif %}
-                        {% if userLen > 5 %}
-                        <div class="third"><a href="{% url 'visitedUser' users.5.id %}"><img style="width: 100px;" src="{{ users.5.avatar.url }}" alt=""></a></div>
-                        {% endif %}
-                    </div>
-                    <div class="flex" style="width: 100%;">
-                        {% if userLen > 6 %}
-                        <div class="third"><a href="{% url 'visitedUser' users.6.id %}"><img style="width: 100px;" src="{{ users.6.avatar.url }}" alt=""></a></div>
-                        {% endif %}
-                        {% if userLen > 7 %}
-                        <div class="third"><a href="{% url 'visitedUser' users.7.id %}"><img style="width: 100px;" src="{{ users.7.avatar.url }}" alt=""></a></div>
-                        {% endif %}
-                        {% if userLen > 8 %}
-                        <div class="third"><a href="{% url 'visitedUser' users.8.id %}"><img style="width: 100px;" src="{{ users.8.avatar.url }}" alt=""></a></div>
-                        {% endif %}
-                    </div>
+   
+                        {% for user in users|slice:row %}
+                        <div class="third"><a href="{% url 'visitedUser' user.id %}"><img style="width: 100px;" src="{{ user.avatar.url }}" alt=""></a></div>
+                        {% endfor %}
+       
+                    </div> 
+
+                    {% endfor %}
+          
+ 
+                   
+            
+  
+                  
                              
                 </div>
             </div>
