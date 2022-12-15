@@ -68,7 +68,7 @@
                 <button class="writeMessageButton">Nachricht verfassen</button>
             </div>
             <div class="blueBox">
-                {% if postlen > 0 %}
+                {% if post|length > 0 %}
                     <div class="flex">
                         <div>
                             {% for p in post %}

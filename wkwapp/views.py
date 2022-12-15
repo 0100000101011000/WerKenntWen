@@ -230,12 +230,9 @@ def messagesPage(request, id, action):
         post.append(sender)
         received.append(i)
 
-    postlen = len(post)
-
     context = {
         'user': user,
         'post': post,
-        'postlen': postlen,
         'received': received
     }
     return render(request, 'wkwapp/messagesPage.html', context)
