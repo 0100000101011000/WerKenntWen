@@ -69,27 +69,31 @@
             </div>
             <div class="blueBox">
                 {% if post|length > 0 %}
-                    <div class="flex">
-                        <div>
-                            {% for p in post %}
-                                <div style="width: 300px;"><p class="messageText">Von:&nbsp;{{ p }}</p></div>                  
-                            {% endfor %}
-                        </div>
-                        <div>
-                            {% for mess in received %}
-                                <div  class="flex">
-                                    <div>
-                                        <p class="messageText">Betreff:&nbsp;{{ mess.subject }}</p>
-                                    </div>                            
-                                    <div style="margin-left: 280px" class="flex">
-                                        <div><a href="{% url 'read_message' mess.id 1 %}" class="linkButton">Öffnen</a></div>
-                                        <div><a href="" class="linkButton">Antworten</a></div>
-                                        <div><a href="{% url 'messagesPage' mess.id 3 %}" class="linkButton">Löschen</a></div>
-                                    </div>
-                                </div>                               
-                            {% endfor %}
-                        </div>     
-                    </div>            
+                {% for sender, mess in post %}
+                <div class="flex">
+                    
+                    <div>
+                        
+                        <div style="width: 300px;"><p class="messageText">Von:&nbsp;{{ sender.first_name }}</p></div>                  
+                        
+                    </div>
+                    <div>
+                        
+                        <div  class="flex">
+                            <div>
+                                <p class="messageText">Betreff:&nbsp;{{ mess.subject }}</p>
+                            </div>                            
+                            <div style="margin-left: 280px" class="flex">
+                                <div><a href="{% url 'read_message' mess.id 1 %}" class="linkButton">Öffnen</a></div>
+                                <div><a href="" class="linkButton">Antworten</a></div>
+                                <div><a href="{% url 'messagesPage' mess.id 3 %}" class="linkButton">Löschen</a></div>
+                            </div>
+                        </div>                               
+                
+                    </div>     
+                    
+                </div>
+                {% endfor %}           
                 {% else %}
                     <p>Es befinden sich keine Nachrichten in deinem Posteingang</p>
                 {% endif %}

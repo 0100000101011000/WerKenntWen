@@ -217,23 +217,19 @@ def messagesPage(request, id, action):
         todelete.delete()
     user = request.user
     post = []
-    received = []
 
     myFunc.set_last_request(user)  # Spechert den Zeitpunkt der Abfrage
 
     # Durchsucht die Postman-Datenbank nach Nachrichten für den eingeloggten Benutzer
 
     messages = Message.objects.filter(recipient_id=user.id)
-    for i in messages:
-        sender = CustomUser.objects.get(id=i.sender_id)
-        sender = sender.first_name + ' ' + sender.last_name
-        post.append(sender)
-        received.append(i)
+    for mess in messages:
+        sender = CustomUser.objects.get(id=mess.sender_id)
+        post.append((sender,mess))
 
     context = {
         'user': user,
-        'post': post,
-        'received': received
+        'post': post
     }
     return render(request, 'wkwapp/messagesPage.html', context)
 
