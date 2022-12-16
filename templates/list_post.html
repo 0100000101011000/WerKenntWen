@@ -1,58 +1,57 @@
 {% load static %}
 
 
-<div class = "{% cycle 'backgroundBlue1' 'backgroundBlue2' %}">
-    <div class="flex" style="justify-content: space-between;">
-        <div style="margin-top: -16px; margin-bottom: -20px;">
-            <a href="{% url 'visitedUser' sender.id %}">
-                <div>
-                    <img style="width:150px" src="{{ sender.avatar.url }}" alt="">
-                </div>
-                <div>
-                    <p>{{sender.first_name}} {{sender.last_name}}</p>
-                </div>
-            </a>
-        </div>
-        <div class="userDatesContainer">
-            <p>{{mess.subject}}</p>
-        </div>
 
-        <!-- ACTIONS -->
-        <div style="margin-right: 30px; margin-top: -20px;">
-            <a href="">
-                <div class="flex">
-                    <div style="padding: 10px 0;">
-                        <img style="width: 50px; height: auto;"
-                            src="{% static 'images/icons/message_icon.png' %}" alt="">
-                    </div>
-                    <div style="padding: 20px 0;">
-                        <p style="margin: 0;">Lesen</p>
-                    </div>
+<div class="flex" style="justify-content: space-between;">
+    <div style="margin-top: -16px; margin-bottom: -20px;">
+        <a href="{% url 'visitedUser' sender.id %}">
+            <div>
+                <img style="width:150px" src="{{ sender.avatar.url }}" alt="">
+            </div>
+            <div style="display: block;">
+                <p>{{sender.first_name}} {{sender.last_name}}</p>
+            </div>
+        </a>
+    </div>
+    <div class="userDatesContainer">
+        <p>{{mess.subject}}</p>
+    </div>
+
+    <!-- ACTIONS -->
+    <div style="margin-right: 30px; margin-top: -20px;">
+        <a href="{% url 'read_message' mess.id 1 %}">
+            <div class="flex">
+                <div style="padding: 10px 0;">
+                    <img style="width: 50px; height: auto;"
+                        src="{% static 'images/icons/message_icon.png' %}" alt="">
                 </div>
-            </a>
-            <a href="{% url 'send_message' sender.id %}">
-                <div class="flex">
-                    <div style="padding: 10px 0;">
-                        <img style="width: 50px; height: auto;"
-                            src="{% static 'images/icons/message_icon.png' %}" alt="">
-                    </div>
-                    <div style="padding: 20px 0;">
-                        <p style="margin: 0;">Antworten</p>
-                    </div>
+                <div style="padding: 20px 0;">
+                    <p style="margin: 0;">Lesen</p>
                 </div>
-            </a>
-            <a href="">
-                <div class="flex">
-                    <div style="padding: 10px 0;">
-                        <img style="width: 50px; height: auto;"
-                            src="{% static 'images/icons/message_icon.png' %}" alt="">
-                    </div>
-                    <div style="padding: 20px 0;">
-                        <p style="margin: 0;">Löschen</p>
-                    </div>
+            </div>
+        </a>
+        <a href="{% url 'send_message' sender.id %}">
+            <div class="flex">
+                <div style="padding: 10px 0;">
+                    <img style="width: 50px; height: auto;"
+                        src="{% static 'images/icons/message_icon.png' %}" alt="">
                 </div>
-            </a>
-            
-        </div>
+                <div style="padding: 20px 0;">
+                    <p style="margin: 0;">Antworten</p>
+                </div>
+            </div>
+        </a>
+        <a href="{% url 'messagesPage' mess.id 3 %}">
+            <div class="flex">
+                <div style="padding: 10px 0;">
+                    <img style="width: 50px; height: auto;"
+                        src="{% static 'images/icons/message_icon.png' %}" alt="">
+                </div>
+                <div style="padding: 20px 0;">
+                    <p style="margin: 0;">Löschen</p>
+                </div>
+            </div>
+        </a>
+        
     </div>
 </div>
