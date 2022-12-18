@@ -67,17 +67,21 @@
             <div>
                 <button class="writeMessageButton">Nachricht verfassen</button>
             </div>
+            
+            {% if post|length > 0 %}
+            {% for sender, mess in post %}
+            <div class = "{% cycle 'backgroundBlue1' 'backgroundBlue2' %}">
+                {% include 'list_post.html' %} 
+            </div>  
+            {% endfor %}
+            
+            {% else %}
             <div class="blueBox">
-                {% if post|length > 0 %}
-                {% for sender, mess in post %}
-                <div class = "{% cycle 'backgroundBlue1' 'backgroundBlue2' %}">
-                    {% include 'list_post.html' %} 
-                </div>  
-                {% endfor %}           
-                {% else %}
-                    <p>Es befinden sich keine Nachrichten in deinem Posteingang</p>
-                {% endif %}
+                <p>Es befinden sich keine Nachrichten in deinem Posteingang</p>
             </div>
+                    
+            {% endif %}
+            
             <div>
                 <p>Die Nachrichten werden nach 30 Tagen automatisch gelöscht.</p>
             </div>

@@ -92,7 +92,7 @@ def set_last_request(user):
   user.save()
 
 
-def is_user_online(user):
+def is_user_online(user): #Prüft, ob ein Benutzer online ist
   try:
     if (timezone.now() - user.last_online) < timezone.timedelta(minutes=5):
       return True
@@ -101,23 +101,23 @@ def is_user_online(user):
     return False
 
 
-def conaction_chain(user1,user2):
-
-  middlemans = None
+def conaction_chain(user1,user2):      #Gibt Middlemans zurück, None = keine Verbindung,
+                                        #False = direkte Verbindung(Befreundet) oder eine Liste
+  middlemans = None                     #der Benutzer die zwischen user1 und user2 stehen
   middlemans_id = []
   conection_chain = False
 
-  if Conections.get_conection(p1_id=user1.id, p2_id=user2.id):
+  if Conections.get_conection(p1_id=user1.id, p2_id=user2.id):  #Gibt es eine direkte Verbindung?
     middlemans = False
 
   else:
 
       your_frendchips = Conections.get_conection(p1_id=user2.id,bool=False)
 
-      if len(your_frendchips) > 0:
+      if len(your_frendchips) > 0:  #Vorausgesetzt der besuchte User hat Freunde
 
           my_frendchips = Conections.get_conection(p1_id=user1.id,bool=False)           
-          if len(my_frendchips) > 0:
+          if len(my_frendchips) > 0:  #Vorausgesetzt ich habe Freunde
 
               my_frend_id_list = []
 

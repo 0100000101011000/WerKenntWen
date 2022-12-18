@@ -340,9 +340,11 @@ a {
 
 .backgroundBlue1 {
   background-color: rgb(189, 255, 255);
+  width: 100%;
 }
 .backgroundBlue2 {
   background-color: rgb(220, 255, 255);
+  width: 100%;
 }
 
 

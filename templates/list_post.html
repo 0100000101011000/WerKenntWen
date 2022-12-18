@@ -3,22 +3,25 @@
 
 
 <div class="flex" style="justify-content: space-between;">
-    <div style="margin-top: -16px; margin-bottom: -20px;">
-        <a href="{% url 'visitedUser' sender.id %}">
-            <div>
-                <img style="width:150px" src="{{ sender.avatar.url }}" alt="">
-            </div>
-            <div style="display: block;">
-                <p>{{sender.first_name}} {{sender.last_name}}</p>
-            </div>
-        </a>
+    <div class="flex">
+        <div style="display: flex;">
+            <input type="checkbox" style="margin: 0; padding: 0; width: 20px;">
+            <p style="padding: 0; margin: 0;">Auswählen</p>
+            <a href="{% url 'visitedUser' sender.id %}">
+                <div class="flex">
+                    <img style="width:150px" src="{{ sender.avatar.url }}" alt="">
+                    <p>{{sender.first_name}} {{sender.last_name}}</p>
+                </div>
+            </a>
+        </div>
     </div>
+    
     <div class="userDatesContainer">
         <p>{{mess.subject}}</p>
     </div>
 
     <!-- ACTIONS -->
-    <div style="margin-right: 30px; margin-top: -20px;">
+    <div>
         <a href="{% url 'read_message' mess.id 1 %}">
             <div class="flex">
                 <div style="padding: 10px 0;">
