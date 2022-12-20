@@ -64,11 +64,18 @@
             <h1 class="headline">
                 Nachrichten
             </h1>
-            <div>
+            <div style="margin-bottom: 20px;">
                 <button class="writeMessageButton">Nachricht verfassen</button>
             </div>
             
             {% if post|length > 0 %}
+            <div class="messagesHeader">
+                <p>wählen</p>
+                <p>Name</p>
+                <p>Betreff</p>
+                <p>eingegangen</p>
+                <p>Aktionen</p>
+            </div>
             {% for sender, mess in post %}
             <div class = "{% cycle 'backgroundBlue1' 'backgroundBlue2' %}">
                 {% include 'list_post.html' %} 
@@ -90,13 +97,15 @@
             
         </div>
 
-
+        {% if post|length < 1 %}
         <!-- RIGHT PAGE SECTION -->
 
         <div class="page-section" style="margin: 50px 20px">
             
             
         </div>
+
+        {% endif %}
 
 
 
