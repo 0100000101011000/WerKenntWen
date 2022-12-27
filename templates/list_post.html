@@ -5,7 +5,7 @@
 <div class="flex" style="justify-content: space-between;">
     <div class="flex">
     
-        <div class="flex" style="align-items: center; margin-bottom: 250px;">
+        <div class="flex">
             <input type="checkbox" style="margin: 0; padding: 0; width: 20px;">
             <p style="padding: 0; margin: 0;">Auswählen</p>
         </div>
@@ -20,44 +20,38 @@
     </div>
     
     <div class="userDatesContainer">
-        <a href="{%  %}" style="font-weight: bold;">{{mess.subject}}</a>
+        <a href="{% url 'visitedUser' sender.id %}" style="font-weight: bold;">{{mess.subject}}</a>
     </div>
 
     <!-- ACTIONS -->
-    <div>
-        <a href="{% url 'read_message' mess.id 1 %}">
+    <div style="margin: 10px;">
+        <a style="margin: 0;" href="{% url 'read_message' mess.id 1 %}">
             <div class="flex">
-                <div>
-                    <img style="width: 50px; height: auto;"
-                        src="{% static 'images/icons/message_icon.png' %}" alt="">
-                </div>
-                <div style="padding: 20px 0;">
-                    <p style="margin: 0;">Lesen</p>
-                </div>
+                <img style="width: 35px; height: auto;"
+                    src="{% static 'images/icons/messages/read.png' %}" alt="">           
+                <p style="margin-top: 10px; margin-bottom: 0px;">Lesen</p>           
             </div>
         </a>
-        <a href="{% url 'send_message' sender.id %}">
-            <div class="flex">
-                <div>
-                    <img style="width: 50px; height: auto;"
-                        src="{% static 'images/icons/message_icon.png' %}" alt="">
-                </div>
-                <div style="padding: 20px 0;">
-                    <p style="margin: 0;">Antworten</p>
-                </div>
+        <a style="margin: 0;" href="{% url 'send_message' sender.id %}">
+            <div class="flex" style="margin-top: -5px;">           
+                    <img style="width: 35px; height: auto;"
+                        src="{% static 'images/icons/messages/send.png' %}" alt="">
+                    <p style="margin-top: 10px; margin-bottom: 0px;">Antworten</p>
+            </div>      
+        </a>
+        <a style="margin: 0;" href="">
+            <div class="flex" style="margin-top: -5px;">           
+                    <img style="width: 35px; height: auto;"
+                        src="{% static 'images/icons/messages/lead.png' %}" alt="">          
+                    <p style="margin-top: 10px; margin-bottom: 0px;">Weiterleiten</p>                
             </div>
         </a>
-        <a href="{% url 'messagesPage' mess.id 3 %}">
-            <div class="flex">
-                <div>
-                    <img style="width: 50px; height: auto;"
-                        src="{% static 'images/icons/message_icon.png' %}" alt="">
-                </div>
-                <div style="padding: 20px 0;">
-                    <p style="margin: 0;">Löschen</p>
-                </div>
+        <a style="margin: 0;" href="{% url 'messagesPage' mess.id 3 %}">
+            <div class="flex" style="margin-top: -5px;">           
+                    <img style="width: 35px; height: auto;"
+                        src="{% static 'images/icons/messages/block.png' %}" alt="">          
+                    <p style="margin-top: 10px; margin-bottom: 0px;">Löschen</p>                
             </div>
         </a>
-        
     </div>
 </div>

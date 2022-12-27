@@ -70,11 +70,11 @@
             
             {% if post|length > 0 %}
             <div class="messagesHeader">
-                <p>wählen</p>
+                <p style="margin-left: 20px;">wählen</p>
                 <p>Name</p>
                 <p>Betreff</p>
                 <p>eingegangen</p>
-                <p>Aktionen</p>
+                <p style="margin-right: 20px;">Aktionen</p>
             </div>
             {% for sender, mess in post %}
             <div class = "{% cycle 'backgroundBlue1' 'backgroundBlue2' %}">
