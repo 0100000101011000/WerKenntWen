@@ -1,56 +1,96 @@
 {% load static %}
 
+<div style="height: 10px;">
+    <!-- Platzhalter -->
+</div>
 
+<div class="flex">
 
-<div class="flex" style="justify-content: space-between;">
-    <div class="flex">
     
-        <div class="flex">
-            <input type="checkbox" style="margin: 0; padding: 0; width: 20px;">
-            <p style="padding: 0; margin: 0;">Auswählen</p>
-        </div>
-        
+    
+    
+    <div class="flex" style="margin-right: 10px;">
+        <input type="checkbox" style="margin: 0; padding: 0; width: 20px;">
+        <p style="padding: 0; margin: 0;">Auswählen</p>
+    </div> 
+
+    <div style="width: 150px; margin-right: 40px; align-items: center;" class="flex">
         <a href="{% url 'visitedUser' sender.id %}">
-            <div class="flex">
-                <img style="width:150px; height: auto;" src="{{ sender.avatar.url }}" alt="">
-                <p>{{sender.first_name}} {{sender.last_name}}</p>
-            </div>
-        </a>
-     
+            <img style="width: 100%;" src="{{ sender.avatar.url }}" alt="">
+        </a>       
     </div>
     
-    <div class="userDatesContainer">
-        <a href="{% url 'visitedUser' sender.id %}" style="font-weight: bold;">{{mess.subject}}</a>
+    <div style="width: 285px;">
+        <a href="{% url 'visitedUser' sender.id %}">
+            {{sender.first_name}} {{sender.last_name}}
+        </a>          
     </div>
+    
+    
+    <div style="width: 200px; margin-right: 25px">
+        <a href="{% url 'read_message' mess.id 1 %}" style="font-weight: bold;">{{mess.subject}}</a>
+    </div>
+
+    
+
+    <div style="width: 200px; margin-left: 80px;">
+        <!-- Hier wird im Tag und Zeit des Nachrichtsempfang eingefügt -->
+        <p style="margin: 0;" id="{{ mess.id }}">
+            date/today/yesterday | time
+        </p>
+    </div>
+
+    <script>
+        var messday = "{{ mess.sent_at.day }}";
+        var messmon = "{{ mess.sent_at.month }}";
+        var messyear = "{{ mess.sent_at.year }}";
+        var date = messday + "." + messmon + "." + messyear;
+        var dateContainer = document.getElementById("{{ mess.id }}")
+        if(messday == dd && messmon == mm && messyear == yyyy) {
+            dateContainer.innerHTML = `
+            Heute | {{ mess.sent_at.time }}
+            `;
+        }
+        else if(messday+1 == dd && messmon == mm && messyear == yyyy) {
+            dateContainer.innerHTML = `
+            Gestern | {{ mess.sent_at.time }}
+            `; 
+        }
+        else {
+            dateContainer.innerHTML = `
+            ${date} | {{ mess.sent_at.time }}
+            `; 
+        }
+    </script>
 
     <!-- ACTIONS -->
-    <div style="margin: 10px;">
+    <div style="margin: 10px; margin-left: 100px;">
         <a style="margin: 0;" href="{% url 'read_message' mess.id 1 %}">
             <div class="flex">
                 <img style="width: 35px; height: auto;"
                     src="{% static 'images/icons/messages/read.png' %}" alt="">           
-                <p style="margin-top: 10px; margin-bottom: 0px;">Lesen</p>           
+                <p style="margin-top: 8px; margin-bottom: 0px;">Lesen</p>           
             </div>
         </a>
         <a style="margin: 0;" href="{% url 'send_message' sender.id %}">
             <div class="flex" style="margin-top: -5px;">           
                     <img style="width: 35px; height: auto;"
                         src="{% static 'images/icons/messages/send.png' %}" alt="">
-                    <p style="margin-top: 10px; margin-bottom: 0px;">Antworten</p>
+                    <p style="margin-top: 8px; margin-bottom: 0px;">Antworten</p>
             </div>      
         </a>
         <a style="margin: 0;" href="">
             <div class="flex" style="margin-top: -5px;">           
                     <img style="width: 35px; height: auto;"
                         src="{% static 'images/icons/messages/lead.png' %}" alt="">          
-                    <p style="margin-top: 10px; margin-bottom: 0px;">Weiterleiten</p>                
+                    <p style="margin-top: 8px; margin-bottom: 0px;">Weiterleiten</p>                
             </div>
         </a>
         <a style="margin: 0;" href="{% url 'messagesPage' mess.id 3 %}">
             <div class="flex" style="margin-top: -5px;">           
                     <img style="width: 35px; height: auto;"
                         src="{% static 'images/icons/messages/block.png' %}" alt="">          
-                    <p style="margin-top: 10px; margin-bottom: 0px;">Löschen</p>                
+                    <p style="margin-top: 8px; margin-bottom: 0px;">Löschen</p>                
             </div>
         </a>
     </div>

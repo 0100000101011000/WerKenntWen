@@ -71,11 +71,18 @@
             {% if post|length > 0 %}
             <div class="messagesHeader">
                 <p style="margin-left: 20px;">wählen</p>
-                <p>Name</p>
-                <p>Betreff</p>
-                <p>eingegangen</p>
-                <p style="margin-right: 20px;">Aktionen</p>
+                <p style="margin-left: 230px;">Name</p>
+                <p style="margin-left: 235px;">Betreff</p>
+                <p style="margin-left: 235px;">eingegangen</p>
+                <p style="margin-right: 20px; margin-left: 180px">Aktionen</p>
             </div>
+            <script>
+                // Heutiges Datum zum Ablgeich
+                const today = new Date();
+                const dd = String(today.getDate()).padStart(2, '0');
+                const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                const yyyy = today.getFullYear();
+            </script>
             {% for sender, mess in post %}
             <div class = "{% cycle 'backgroundBlue1' 'backgroundBlue2' %}">
                 {% include 'list_post.html' %} 
