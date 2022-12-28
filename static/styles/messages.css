@@ -116,3 +116,47 @@
     background-color: #82a4cd;
     color: white;
 }
+
+.equalFlex {
+    /* border-style: solid; */
+    width: 30%;
+}
+
+.equalFrame {
+    /* border-style: solid; */
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.equalTag {
+    font-size: 20px;
+    margin: 0;
+    height: 40px;
+    padding: 0;
+}
+.equalTag2 {
+    font-size: 20px;
+    margin: 0;
+    height: 62.9px;
+    width: 300px;
+    padding: 0;
+    resize: none;
+}
+.equalTag3 {
+    font-size: 20px;
+    margin: 0;
+    height: 71px;
+    padding: 0;
+    resize: none;
+}
+
+.bluelineInvert {
+    display: flex;
+    width: 100%;
+    background: -webkit-linear-gradient(#a9c1da,#79a3ce);
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+

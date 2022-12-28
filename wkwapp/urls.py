@@ -17,7 +17,8 @@ urlpatterns = [
     path('acceptUser/', views.acceptUser, name='acceptUser'),
     path('know/', views.know, name='know'),
     path('know_requests/', views.know_requests, name='know_requests'),
-    path('search_user/', views.search_user, name='search_user')
+    path('search_user/', views.search_user, name='search_user'),
+    path('changeDates/', views.changeDates, name='changeDates')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

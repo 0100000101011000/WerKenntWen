@@ -1,0 +1,175 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+<link rel="stylesheet" href="{% static 'styles/messages.css' %}">
+
+
+<div class="main">
+
+    <header class="header" style="background-image: url({% static 'images/banner.jpg' %});">
+        <div class="headcontain">
+
+
+            
+            {% include 'head_area.html' %}
+
+
+            <!-- HEADBAR -->
+
+            <div class="headbar">
+                <a class="link_headbar" href="{% url 'home' %}">Start</a>
+                <a class="link_headbar" href="">Neues</a>
+                <a class="link_headbar" href="{% url 'me' %}">Ich</a>
+                <a class="link_headbar" href="{% url 'know' %}">Ich kenne</a>
+                <a class="link_headbar" href="">Gruppen</a>
+                <a class="choosen" href="{% url 'messagesPage' user.id 1 %}">Nachrichen</a>
+                <a class="link_headbar" href="">Kalender</a>
+                <a class="link_headbar" href="">Einstellungen</a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    
+    <div class="page">
+
+        
+
+
+        <!-- LEFT PAGE SECTION -->
+
+        <div class="page-section" style="width: 2100px; margin: 0 10px;">
+            <h1 class="headline">
+                Meine Seite bearbeiten
+            </h1>
+             
+            <div class="bluelineInvert">
+                <a class="link_headbar" href="">Allgemeines</a>
+                <a class="choosen" href="">Persönliches</a>
+            </div>
+
+
+            <div style="height: 100px;">
+                <!-- placeholder -->
+            </div>
+
+            <!-- QUESTIONS AND ANSWERES -->
+
+            <div class="flex" style="justify-content: center;">
+
+                <!-- QUESTIONS -->
+
+                <div class="equalFlex">
+                    <!-- Q.Beziehungsstatus -->
+                    <div class="equalFrame">
+                        <p class="equalTag">Beziehungsstatus:</p>
+                    </div>
+                    <!-- Q.Über mich  -->
+                    <div class="equalFrame">
+                        <p class="equalTag3">Über mich:</p>
+                    </div>
+                    <!-- Q.Position  -->
+                    <div class="equalFrame">
+                        <p class="equalTag">Position:</p>
+                    </div>
+                    <!-- Q.Beruf  -->
+                    <div class="equalFrame">
+                        <p class="equalTag3">Beruf:</p>
+                    </div>
+                    <!-- Q.Hobbys  -->
+                    <div class="equalFrame">
+                        <p class="equalTag3">Hobbys:</p>
+                    </div>
+                    <!-- Q.Musik  -->
+                    <div class="equalFrame">
+                        <p class="equalTag3">Musik:</p>
+                    </div>
+                    <!-- Q.Filme  -->
+                    <div class="equalFrame">
+                        <p class="equalTag3">Filme:</p>
+                    </div>
+                    <!-- Q.Bücher  -->
+                    <div class="equalFrame">
+                        <p class="equalTag3">Bücher:</p>
+                    </div>
+
+                </div>
+
+                <!-- ANSWERES -->
+
+                <div class="equalFlex">
+                    <!-- A.Beziehungsstatus -->
+                    <div class="equalFrame">
+                        <select class= "equalTag"name="relationsship_status" id="">
+                            <option value="keine Angaben">keine Angaben</option>
+                            <option value="Single">Single</option>
+                            <option value="Vergeben">Vergeben</option>
+                            <option value="Verheiratet">Verheiratet</option>
+                            <option value="Es ist kompliziert">Es ist kompliziert</option>
+                            <option value="offene Beziehung">offene Beziehung</option>
+                            <option value="Verwitwet">Verwitwet</option>
+                        </select>
+                    </div>
+                    <!-- A.Über mich -->
+                    <div class="equalFrame">
+                        <textarea class="equalTag2" name="" id=""></textarea>
+                    </div>
+                    <!-- A.Position -->
+                    <div class="equalFrame">
+                        <select class= "equalTag"name="position" id="">
+                            <option value="keine Angaben">keine Angaben</option>
+                            <option value="Schüler">Schüler</option>
+                            <option value="Angestellter">Angestellter</option>
+                            <option value="Selbstständig">Selbstständig</option>
+                            <option value="Es ist kompliziert">Es ist kompliziert</option>
+                            <option value="Freiberufler">Freiberufler</option>
+                            <option value="Hausfrau/Hausmann">Hausfrau/Hausmann</option>
+                            <option value="Arbeitslos">Arbeitslos</option>
+                            <option value="Arbeitssuchend">Arbeitssuchend</option>
+                        </select>
+                    </div>
+                    <!-- A.Beruf -->
+                    <div class="equalFrame">
+                        <textarea class="equalTag2" name="job" id=""></textarea>
+                    </div>
+                    <!-- A.Hobbys -->
+                    <div class="equalFrame">
+                        <textarea class="equalTag2" name="hobbies" id=""></textarea>
+                    </div>
+                    <!-- A.Musik -->
+                    <div class="equalFrame">
+                        <textarea class="equalTag2" name="music" id=""></textarea>
+                    </div>
+                    <!-- A.Filme -->
+                    <div class="equalFrame">
+                        <textarea class="equalTag2" name="movies" id=""></textarea>
+                    </div>
+                    <!-- A.Bücher -->
+                    <div class="equalFrame">
+                        <textarea class="equalTag2" name="books" id=""></textarea>
+                    </div>
+
+                </div>
+       
+
+       
+
+            </div>
+
+            
+
+            
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock content %}

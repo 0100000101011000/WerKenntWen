@@ -10,6 +10,16 @@ from . import myFunc
 
 errormessage = 'Falsche E-Mail oder Passwort'
 
+############################# C H A N G E _ D A T E S ####################################
+@login_required(login_url='index')
+def changeDates(request):
+
+    user = request.user
+
+    context = {'user':user}
+
+    return render(request, 'wkwapp/changeDates.html', context)
+
 
 ################################## A S K ####################################
 def askUser(request):

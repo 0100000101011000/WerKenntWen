@@ -42,11 +42,11 @@
 
     <div class="receivedSentFrame">
         <div>
-            <div class="receivedSent"><a class="received" href="">Posteingang</a></div>
+            <div class="receivedSent"><a class="no_underline" href="">Posteingang</a></div>
             <div class="underlined"></div>
         </div>
         <div>
-            <div class="receivedSent"><a class="sent" href="">Gesendet</a></div>
+            <div class="receivedSent"><a class="no_underline" href="">Gesendet</a></div>
             <div class="underline"></div>
         </div>
         
@@ -82,7 +82,15 @@
                 const dd = String(today.getDate()).padStart(2, '0');
                 const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
                 const yyyy = today.getFullYear();
+
+                // Gestriges Datum zum Ablgeich
+                const yesterday = new Date();
+                yesterday.setDate(today.getDate()-1);
+                const y_dd = String(yesterday.getDate()).padStart(2, '0');
+                const y_mm = String(yesterday.getMonth() + 1).padStart(2, '0');
+                const y_yyyy = yesterday.getFullYear(); 
             </script>
+
             {% for sender, mess in post %}
             <div class = "{% cycle 'backgroundBlue1' 'backgroundBlue2' %}">
                 {% include 'list_post.html' %} 

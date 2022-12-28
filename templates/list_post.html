@@ -51,7 +51,7 @@
             Heute | {{ mess.sent_at.time }}
             `;
         }
-        else if(messday+1 == dd && messmon == mm && messyear == yyyy) {
+        else if(messday == y_dd && messmon == y_mm && messyear == y_yyyy) {
             dateContainer.innerHTML = `
             Gestern | {{ mess.sent_at.time }}
             `; 
@@ -65,7 +65,7 @@
 
     <!-- ACTIONS -->
     <div style="margin: 10px; margin-left: 100px;">
-        <a style="margin: 0;" href="{% url 'read_message' mess.id 1 %}">
+        <a class="underline" style="margin: 0;" href="{% url 'read_message' mess.id 1 %}">
             <div class="flex">
                 <img style="width: 35px; height: auto;"
                     src="{% static 'images/icons/messages/read.png' %}" alt="">           

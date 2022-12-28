@@ -9,6 +9,10 @@ input,
   border-style: solid;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 input {
   height: 35px;
 }
@@ -139,21 +143,25 @@ input {
 
 .link_headbar,
 .choosen {
-  /* position: absolute; */
   margin: 0;
   font-size: 24px;
   color: white;
-  text-decoration: solid;
   margin-right: 24px;
   font-weight: bold;
 }
 
 .choosen {
   color: #3589c9;
+  text-decoration: solid;
+}
+
+.choosen:hover {
+  text-decoration: solid;
 }
 
 .link_headbar:hover {
   color: #3589c9;
+  text-decoration: solid;
 }
 
 .page-section {
@@ -347,5 +355,8 @@ a {
   width: 100%;
 }
 
+.no_underline:hover {
+  text-decoration: solid;
+}
 
 
